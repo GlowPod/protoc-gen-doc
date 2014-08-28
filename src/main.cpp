@@ -300,14 +300,14 @@ static void addFile(const gp::FileDescriptor *fileDescriptor, QVariantList *file
     for (int i = 0; i < fileDescriptor->message_type_count(); ++i) {
         addMessages(fileDescriptor->message_type(i), &messages, &enums);
     }
-    std::sort(messages.begin(), messages.end(), &longNameLessThan);
+    //std::sort(messages.begin(), messages.end(), &longNameLessThan); // I want to maintain the order in the original source code
     file["file_messages"] = messages;
 
     // Add enums.
     for (int i = 0; i < fileDescriptor->enum_type_count(); ++i) {
         addEnum(fileDescriptor->enum_type(i), &enums);
     }
-    std::sort(enums.begin(), enums.end(), &longNameLessThan);
+    //std::sort(enums.begin(), enums.end(), &longNameLessThan);  // I want to maintain the order in the original source code
     file["file_enums"] = enums;
 
     files->append(file);
